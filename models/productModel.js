@@ -71,4 +71,18 @@ const productSchema=new mongoose.Schema({
 },{
     timestamps: true
 });
+
+//Mongoose query middleware to populate the category and subCategory fields
+productSchema.pre(/^find/, function(next){
+    this.populate({
+        path: 'category',
+        select: 'name -_id'
+    }).populate({
+        path: 'subCategory',
+        select: 'name -_id'
+    });
+
+    next();
+});
+
     module.exports=mongoose.model('Product', productSchema);
