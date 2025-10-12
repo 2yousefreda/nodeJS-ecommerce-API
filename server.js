@@ -1,3 +1,4 @@
+const path =require('path');
 const express =require('express');
 const dotenv =require('dotenv').config();
 var morgan = require('morgan')
@@ -14,6 +15,8 @@ dbConnection();
 
 const app = express();  
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'uploads')));
+
 if (process.env.NODE_ENV === 'dev') {
     app.use(morgan('dev'));
     console.log(`Mode: ${process.env.NODE_ENV}`);
