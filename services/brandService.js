@@ -8,7 +8,7 @@ const { uploadSingleImage } = require("../middlewares/uploadImageMiddleware");
 
 
 // Upload single image
-exports.uploadCategoryImage = uploadSingleImage('image');
+exports.uploadBrandImage = uploadSingleImage('image');
 
 //image processing
 exports.resizeImage = asyncHandler( async (req, res, next) => {
